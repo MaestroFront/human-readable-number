@@ -3,9 +3,11 @@ module.exports = function toReadable (number) {
     const str = String(number); // перевод числа в строку
 
     const arrayOne = ['one', 'two', 'three', 'four', 'five', 'six', 'seven', 'eight', 'nine']; // массив обозначений чисел от 1 до 9
-    const arrayTwo = ['eleven', 'twelve', 'thirteen', 'fourteen', 'fivteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']; // массив обозначений чисел от 11 до 19
-    const arrayThree = ['ten', 'twenty', 'thirty', 'fourty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']; // массив обозначений чисел с нулём на конце от 10 до 90
-    const hundred = 'hundred'; // обозначение чисел, состоящих из трёх цифр и с двумя нулями на конце
+    const arrayTwo = ['eleven', 'twelve', 'thirteen', 'fourteen', 'fifteen', 'sixteen', 'seventeen', 'eighteen', 'nineteen']; // массив обозначений чисел от 11 до 19
+    const arrayThree = ['ten', 'twenty', 'thirty', 'forty', 'fifty', 'sixty', 'seventy', 'eighty', 'ninety']; // массив обозначений чисел с нулём на конце от 10 до 90
+    const hundred = 'hundred'; // обозначение числа, состоящего из трёх цифр и с двумя нулями на конце
+
+    const numberZero = number === 0; // цифра 0
 
     const element1 = str[0] - 1; // первая цифра числа равняется элементу выбранного массива
     const element2 = str[1] - 1; // вторая цифра числа равняется элементу выбранного массива
@@ -21,16 +23,19 @@ module.exports = function toReadable (number) {
     const number8 = `${number5} ${arrayTwo[element3]}`; // 111 112 113 114 115 116 117 118 119
     const number9 = `${number7} ${arrayOne[element3]}`; // все остальные числа до 1000
 
-    const length1 = str.length === 1; // числа с 1 цифрой
-    const length2 = str.length === 2; // числа с двумя цифрами
-    const length3 = str.length === 3; // числа с тремя цифрами
+    const length1 = str.length === 1; // число с 1 цифрой
+    const length2 = str.length === 2; // число с двумя цифрами
+    const length3 = str.length === 3; // число с тремя цифрами
 
+    const zero = 'zero'; // обозначение цифры 0
     const zero1 = str[1] === '0'; // вторая цифра в числе 0
     const zero2 = str[2] === '0'; // третья цифра в числе 0
 
     const sum = +(str[1] + str[2]); // число, состоящее из второй и третьей цифры
 
-    if (length1) {
+    if (numberZero) {
+        return zero;
+    } else if (length1) {
         return number1;
     } else if (length2 && zero1) {
         return number2;
