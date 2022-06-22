@@ -1,4 +1,4 @@
-module.exports = function toReadable (number) {
+module.exports = toReadable = (number) => {
 
     const str = String(number); // перевод числа в строку
 
